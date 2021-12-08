@@ -4,25 +4,23 @@ function iniciarJogo() {
     var cor = new Map();
 
 
-    cor.set("aqua", "#00FFFF");
-    cor.set("cyan", "#00FFFF");
-    cor.set("forestgreen", "#228B22");
-    cor.set("lightblue", "#ADD8E6");
-    cor.set("mediumspringgreen", "#00FA9A");
-    cor.set("olivedrab", "#6B8E23");
-    cor.set("purple", "#800080");
-    cor.set("sandybrown", "#F4A460");
-    cor.set("teal", "#008080");
-    cor.set("turquoise", "#40E0D0");
+    cor.set("Black", "#000000");
+    cor.set("Navy", "#000080");
+    cor.set("SteelBlue", "#4682B4");
+    cor.set("DarkGreen", "#006400");
+    cor.set("GreenYellow", "#ADFF2F");
+    cor.set("RosyBrown", "#BC8F8F");
+    cor.set("Indigo", "#4B0082");
+    cor.set("DarkMagenta", "#8B008B");
+    cor.set("DarkRed", "#8B0000");
+    cor.set("Yellow", "#FFFF00");
 
 
-    var vetorCor = ["aqua", "cyan", "forestgreen", "lightblue", "mediumspringgreen", "olivedrab", "purple", "sandybrown", "teal", "turquoise"];
+    var vetorCor = ["Black", "Navy", "SteelBlue", "DarkGreen", "GreenYellow", "RosyBrown", "Indigo", "DarkMagenta", "DarkRed", "Yellow"];
     var num = Math.floor(10 * Math.random() + 1);
-    let cor = prompt("Selecione uma cor \n (aqua, cyan, forestgreen, lightblue, mediumspringgreen, olivedrab, purple, sandybrown, teal, turquoise) e veja se acerta: ");
+    let cor = prompt("Escolha uma cor \n (Black, Navy, SteelBlue, DarkGreen, GreenYellow, RosyBrown, Indigo, DarkMagenta, DarkRed, Yellow) e veja se acertou: ");
     
-    
-    
-    
+       
     if (cores != null && cores != "") {
         if (cores != vetorCor[num]) {
             alert("Você Errou!");
