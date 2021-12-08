@@ -1,4 +1,5 @@
 "use strict";
+document.getElementById("iniciar").addEventListener('click', iniciarJogo); 
 
 function iniciarJogo() {
     var cor = new Map();
