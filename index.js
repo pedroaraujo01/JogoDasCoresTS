@@ -18,7 +18,7 @@ function iniciarJogo() {
 
     var vetorCor = ["Black", "Navy", "SteelBlue", "DarkGreen", "GreenYellow", "RosyBrown", "Indigo", "DarkMagenta", "DarkRed", "Yellow"];
     var num = Math.floor(10 * Math.random() + 1);
-    let cor = prompt("Escolha uma cor \n (Black, Navy, SteelBlue, DarkGreen, GreenYellow, RosyBrown, Indigo, DarkMagenta, DarkRed, Yellow) e veja se acertou: ");
+    let cores = prompt("Escolha uma cor \n (Black, Navy, SteelBlue, DarkGreen, GreenYellow, RosyBrown, Indigo, DarkMagenta, DarkRed, Yellow) e veja se acertou: ");
     
        
     if (cores != null && cores != "") {
