@@ -1,38 +1,60 @@
 "use strict";
 document.getElementById("iniciar").addEventListener('click', iniciarJogo); 
 
-function iniciarJogo() {
-    var cor = new Map();
+import { colors } from "./colors.js"; 
+document.getElementById("iniciar").addEventListener('click', iniciaJogo); 
 
 
-    cor.set("Black", "#000000");
-    cor.set("Navy", "#000080");
-    cor.set("SteelBlue", "#4682B4");
-    cor.set("DarkGreen", "#006400");
-    cor.set("GreenYellow", "#ADFF2F");
-    cor.set("RosyBrown", "#BC8F8F");
-    cor.set("Indigo", "#4B0082");
-    cor.set("DarkMagenta", "#8B008B");
-    cor.set("DarkRed", "#8B0000");
-    cor.set("Yellow", "#FFFF00");
-
-
-    var vetorCor = ["Black", "Navy", "SteelBlue", "DarkGreen", "GreenYellow", "RosyBrown", "Indigo", "DarkMagenta", "DarkRed", "Yellow"];
-    var num = Math.floor(10 * Math.random() + 1);
-    let cores = prompt("Escolha uma cor \n (Black, Navy, SteelBlue, DarkGreen, GreenYellow, RosyBrown, Indigo, DarkMagenta, DarkRed, Yellow) e veja se acertou: ");
+function iniciaJogo() {
+    var vidas = 5;
+    var vetorCores = [];
+    var cores = colors();
+    var corEscolhida; 
+    var booleano; 
     
-       
-    if (cores != null && cores != "") {
-        if (cores != vetorCor[num]) {
-            alert("Você Errou!");
-            document.body.style.backgroundColor = cor.get(vetorCor[num]);
+
+    while (vetorCores.length < 10) {
+        vetorCores[vetorCores.length] = cores[Math.floor(Math.random() * (cores.length - 1)) + 1];
+        vetorCores = [...new Set(vetorCores)];
+    }
+    vetorCores.sort();
+    
+    var corSelecionada = Math.floor(Math.random() * (vetorCores.length - 1)) + 1;
+    var vetorCores2 = vetorCores.map(vetorCores => vetorCores.toUpperCase());
+
+    while (!booleano) {
+        corEscolhida = prompt("Pensei em alguma dessas cores abaixo: \n " + vetorCores.join(',\n') + "\nEm qual delas eu pensei?\n" + `Você tem ${vidas} tentativas restantes`);
+        corEscolhida = corEscolhida.toUpperCase();
+        if (vidas == 0) {
+            booleano = true;
+            document.getElementById("msg").innerHTML = "Tente novamente."
+            alert("Acabou suas tentativas\nFim de jogo.");
+        } else {
+            if (vetorCores2.indexOf(corEscolhida) < 0) {
+                alert("Cor inexistente");
+            } else {
+                if (corEscolhida == vetorCores2[corSelecionadaa]) {
+                    alert("Você acertou!");
+                    booleano = true;
+                    document.body.style.background = corEscolhida;
+                    document.getElementById("msg").innerHTML = `A cor é: ${vetorCores[corSelecionada]}`;
+                } else {
+                    let res = corEscolhida.localeCompare(vetorCores2[corSelecionada])
+                    let dica = "Dica: a cor escolhida é alfabeticamente ";
+                    if (res == -1) {
+                        dica += "depois do que a que você escolheu"
+                    } else {
+                        dica += "antes do que a que você escolheu"
+                    }
+                    vidas--;
+                    alert(`Sua resposta está errada!\n${dica}\nTente novamente.`);
+                }
+
+            }
+
         }
-        else {
-            alert("Você Acertou!");
-            document.body.style.backgroundColor = cor.get(vetorCor[num]);
-        }
+
     }
 }
 
-
-iniciarJogo();
+iniciaJogo();
